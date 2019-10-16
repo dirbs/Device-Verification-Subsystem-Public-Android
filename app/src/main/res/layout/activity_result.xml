@@ -1,345 +1,377 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ResultActivity"
-    android:layout_marginBottom="10dp">
-    <!--
-         Copyright (c) 2018 Qualcomm Technologies, Inc.
-         All rights reserved.
-         Redistribution and use in source and binary forms, with or without modification, are permitted (subject to the limitations in the disclaimer below) provided that the following conditions are met:
-         Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-         Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-         Neither the name of Qualcomm Technologies, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-         NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-    <android.support.constraint.ConstraintLayout
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+  ~ All rights reserved.
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted (subject to the limitations in the disclaimer below) provided that the following conditions are met:
+  ~ * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  ~ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  ~ * Neither the name of Qualcomm Technologies, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  ~ * The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment is required by displaying the trademark/log as per the details provided here: [https://www.qualcomm.com/documents/dirbs-logo-and-brand-guidelines]
+  ~ * Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+  ~ * This notice may not be removed or altered from any source distribution.
+  ~ NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="imeiResponse"
+            type="com.qualcomm.dvspublic.model.ImeiResponse" />
+
+        <variable
+            name="activity"
+            type="com.qualcomm.dvspublic.ui.ResultActivity" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="10dp">
 
-    <TextView
-        android:id="@+id/device_status_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/device_status"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:textAlignment="center"
-        app:layout_constraintLeft_toRightOf="@id/cancelBtn"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-        <ImageButton
-            android:id="@+id/cancelBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_cancel"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:tint="@color/colorPrimaryDark"
-
-            android:foregroundTint="@color/colorPrimaryDark"/>
-    <ImageView
-        android:id="@+id/title_after"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:src="@drawable/title_after"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/device_status_text"
-        android:scaleType="centerInside"
-        android:layout_margin="8dp"
-        android:contentDescription="TODO" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/title_after"
-    android:layout_marginTop="8dp"
-    android:layout_marginRight="16dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginBottom="32dp"
-        android:background="#000">
-
-        <TableRow
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="@dimen/horizontal_margin"
+            android:paddingRight="@dimen/horizontal_margin">
 
             <TextView
-                android:id="@+id/imei_label"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="1dp"
-                android:layout_weight="1"
-                android:background="@color/colorCellHead"
-                android:gravity="center_vertical"
-                android:padding="4dp"
-                android:text="@string/imei"
-
+                android:id="@+id/device_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/device_status"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="#000" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/imei_txt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="123456789012345"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellValue"
-                android:padding="4dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"/>
+            <ImageButton
+                android:id="@+id/cancelBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/close"
+                android:foregroundTint="@color/colorPrimaryDark"
+                android:onClick="@{() -> activity.finish()}"
+                android:src="@drawable/ic_cancel"
+                android:tint="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="@+id/device_status_text"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/device_status_text" />
 
-        </TableRow>
+            <ImageView
+                android:id="@+id/title_after"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_margin="8dp"
+                android:contentDescription="@string/iconAfterTitle"
+                android:scaleType="centerInside"
+                android:src="@drawable/title_after"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/device_status_text" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <TextView
-                android:id="@+id/brand_label"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="@string/brand"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellHead"
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_after">
 
-                android:padding="4dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:textColor="#000"/>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/brand_txt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="Samsung"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellValue"
-                android:padding="4dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"/>
-        </TableRow>
+                    <TextView
+                        android:id="@+id/imei_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellHead"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@string/imei"
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <TextView
-                android:id="@+id/model_name_label"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="@string/model_name"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellHead"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textStyle="bold" />
 
-                android:padding="4dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/imei_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellValue"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@{imeiResponse.imei ?? @string/not_available}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
 
-            <TextView
-                android:id="@+id/model_name_txt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="J6"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellValue"
-                android:padding="4dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"/>
-        </TableRow>
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <TextView
-                android:id="@+id/imei_compliance_status_label"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="@string/imei_compliance_status"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellHead"
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                android:padding="4dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/brand_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellHead"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@string/brand"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/imei_compliance_status_txt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="Provisionally non-compliance"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellValue"
-                android:padding="4dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"/>
-        </TableRow>
+                    <TextView
+                        android:id="@+id/brand_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellValue"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@{imeiResponse.gsma.brand ?? @string/not_available}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <TextView
-                android:id="@+id/reason_noncompliance_label"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="@string/reason_noncompliance"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellHead"
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                android:inputType="textMultiLine"
-                android:padding="4dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/model_name_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellHead"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@string/model_name"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/reason_noncompliance_txt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="N/A"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellValue"
-                android:padding="4dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"/>
-        </TableRow>
+                    <TextView
+                        android:id="@+id/model_name_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellValue"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@{imeiResponse.gsma.modelName ?? @string/not_available}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <TextView
-                android:id="@+id/link_to_help_label"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="@string/link_to_help"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellHead"
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                android:padding="4dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/imei_compliance_status_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellHead"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@string/imei_compliance_status"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/link_to_help_txt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="http://www.example.com"
-                android:textColor="@color/colorLink"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellValue"
-                android:padding="4dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"/>
-        </TableRow>
+                    <TextView
+                        android:id="@+id/imei_compliance_status_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellValue"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@{imeiResponse.compliant.status ?? @string/not_available}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/block_as_of_date_label"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="@string/block_as_of_date"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellHead"
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                android:padding="4dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                android:textColor="#000"/>
+                    <TextView
+                        android:id="@+id/reason_noncompliance_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellHead"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@string/reason_noncompliance"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/block_as_of_date_txt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="N/A"
-                android:layout_weight="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textAlignment="center"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:background="@color/colorCellValue"
-                android:padding="4dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"/>
-        </TableRow>
-    </TableLayout>
+                    <TextView
+                        android:id="@+id/reason_noncompliance_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellValue"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@{imeiResponse.compliant.reason ?? @string/not_available}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/link_to_help_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellHead"
+                        android:gravity="center_vertical"
+
+                        android:padding="4dp"
+                        android:text="@string/link_to_help"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/link_to_help_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellValue"
+                        android:gravity="center_vertical"
+                        android:onClick="@{() -> activity.openUrl(imeiResponse.compliant.linkToHelp)}"
+                        android:padding="4dp"
+                        android:text="@{imeiResponse.compliant.linkToHelp ?? @string/not_available}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textColor="@color/colorLink" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/block_as_of_date_label"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellHead"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@string/block_as_of_date"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+                        android:textStyle="bold" />
 
 
+                    <TextView
+                        android:id="@+id/block_as_of_date_txt"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorCellValue"
+                        android:gravity="center_vertical"
+                        android:padding="4dp"
+                        android:text="@{imeiResponse.compliant.blockDate ?? @string/not_available}"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle" />
+                </TableRow>
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </android.support.constraint.ConstraintLayout>
-
-</ScrollView>
+    </ScrollView>
+</layout>
