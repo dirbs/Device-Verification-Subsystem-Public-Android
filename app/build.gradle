@@ -36,12 +36,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', 'BASE_URL', '"ENTER API GATEWAY URL HERE"'
+            buildConfigField 'String', 'BASE_URL', '"ENTER API GATEWAY BASE URL HERE  (note must end with /)"'
 
         }
         debug {
             testCoverageEnabled true
-            buildConfigField 'String', 'BASE_URL', '"ENTER API GATEWAY URL HERE"'
+            buildConfigField 'String', 'BASE_URL', '"ENTER API GATEWAY BASE URL HERE  (note must end with /)"'
         }
     }
     compileOptions {
