@@ -42,3 +42,31 @@ NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS 
 [Device-Verification-Subsystem-Authority-Android](https://github.com/dirbs/Device-Verification-Subsystem-Authority-Android)<br />
 [Device-Verification-Subsystem-Authority-iOS](https://github.com/dirbs/Device-Verification-Subsystem-Authority-iOS)<br />
 [Device-Verification-Subsystem-Public-iOS](https://github.com/dirbs/Device-Verification-Subsystem-Public-iOS)<br />
+
+###	System Requirements
+####	Software Requirements
+-	JDK 1.8 or more
+-	Android Studio 3.5.1
+-	Android SDK v29 (minimum)
+-	Minimum Android version 16
+-	Gradle 5.4.1
+-	Android Gradle Plugin version 3.5.1
+
+##	reCAPTCHA Configuration
+For reCAPTCHA configurations go to this [link](https://www.google.com/recaptcha/admin#list):
+1.	In Register a new site section enter label for app e.g. Android DVS Public.
+2.	Select “Android” type of reCAPTCHA.
+3.	Enter Package Name.
+4.	Accept the reCAPTCHA Terms of Service
+5.	Click on “Register” button.
+6.	Copy “Site Key”.
+
+##	App Configuration
+-	To change the logo of app go to app/res/drawable folder and paste logo file but make sure the file name should be “company_logo.png”
+-	To change the colors of the app go to app/res/values/colors.xml file and mention hex color code of required color
+-	Open app/res/values/strings.xml file and add site key (copied in section 3.1 step 6) in value section of “reCAPTCHA_key”
+`<string name=”reCAPTCHA_key”>ENTER RECAPTCHA KEY HERE</string>`
+-	Add API Gateway URL in application level build.gradle file
+`Open app-module build.gradle located at app/build.gradle and add API Gateway URL in BASE_URL for both release and debug, build types
+buildConfigField 'String', 'BASE_URL', '"ENTER API GATEWAY URL HERE"'
+`
